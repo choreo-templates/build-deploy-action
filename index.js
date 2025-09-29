@@ -76,6 +76,19 @@ try {
             if (cred.registry_id == "choreo-docker-hub") {
                 continue;
             }
+            if (cred.type == "GCP") {
+                const registryPassword = cred.credentials.registryPassword;
+                const keyContex = Buffer.from(registryPassword, 'base64').toString();
+                const region = cred.credentials.region;
+                const repository = cred.credentials.repository;
+                const projectId = JSON.parse(keyContex)['project_id'];
+                cluster_image_tags.push({
+                    registry_id: cred.registry_id,
+                    clusters: cred.clusters,
+                    image_name_with_tag: `${region}-docker.pkg.dev/${projectId}/${repository}/${choreoApp}:${process.env.NEW_SHA}`
+                });
+                continue;
+            }
             cluster_image_tags.push({
                 registry_id: cred.registry_id,
                 clusters: cred.clusters,
