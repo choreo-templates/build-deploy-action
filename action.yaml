@@ -89,6 +89,10 @@ inputs:
     description: 'Organization UUID'
     required: true
     default: ''
+  component-sub-type:
+    description: "Component sub type detected at build time (e.g. 'webhook'), used to promote event handler components to their service type"
+    required: false
+    default: ""
 outputs:
   choreo-status:
     description: "Status of the Webhook Call to choreo"
