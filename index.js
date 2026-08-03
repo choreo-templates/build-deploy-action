@@ -86,6 +86,7 @@ try {
     const isAutoDeploy = core.getInput('is-auto-deploy') === 'true';
     const runId = core.getInput('run-id');
     const organizationUuid = core.getInput('organizationUuid');
+    const componentSubType = core.getInput('component-sub-type');
 
     const choreoApp = process.env.CHOREO_GITOPS_REPO;
     const cloudProvider = getCloudProvider(choreoApp);
@@ -188,7 +189,8 @@ try {
         cluster_image_tags,
         git_hash_commit_timestamp: gitHashDate,
         is_auto_deploy: isAutoDeploy,
-        run_id: runId
+        run_id: runId,
+        component_sub_type: componentSubType
     };
 
     let WebhhookURL;
