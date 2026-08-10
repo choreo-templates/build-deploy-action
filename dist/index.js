@@ -11952,7 +11952,6 @@ try {
     const gitHashDate = core.getInput('git-hash-date');
     const isAutoDeploy = core.getInput('is-auto-deploy') === 'true';
     const runId = core.getInput('run-id');
-    const organizationUuid = core.getInput('organizationUuid');
     const componentSubType = core.getInput('component-sub-type');
 
     const choreoApp = process.env.CHOREO_GITOPS_REPO;
@@ -12038,7 +12037,8 @@ try {
         cluster_image_tags,
         git_hash_commit_timestamp: gitHashDate,
         is_auto_deploy: isAutoDeploy,
-        run_id: runId
+        run_id: runId,
+        component_sub_type: componentSubType
     } : {
         image: imageName,
         tag: gitHash,
