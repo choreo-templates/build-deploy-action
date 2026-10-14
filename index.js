@@ -77,7 +77,9 @@ try {
     const gitOpsHash = core.getInput('gitops-hash');
     const token = core.getInput('token');
     const debug = core.getInput('debug');
-    const isHttpBased = core.getInput('is-http-based');
+    // The input arrives as a string, so the "false" sent for a non-HTTP event
+    // handler is truthy. Compare it, the way is-auto-deploy already is.
+    const isHttpBased = core.getInput('is-http-based') === 'true';
     const portExtractFilePath = core.getInput('port-extract-file-path');
     const containerId = core.getInput('container-id');
     const isContainerDeployment = core.getInput('is-container-deployment');
