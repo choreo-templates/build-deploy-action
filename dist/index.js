@@ -11944,7 +11944,7 @@ try {
     const gitOpsHash = core.getInput('gitops-hash');
     const token = core.getInput('token');
     const debug = core.getInput('debug');
-    const isHttpBased = core.getInput('is-http-based');
+    const isHttpBased = core.getInput('is-http-based') === 'true';
     const portExtractFilePath = core.getInput('port-extract-file-path');
     const containerId = core.getInput('container-id');
     const isContainerDeployment = core.getInput('is-container-deployment');
